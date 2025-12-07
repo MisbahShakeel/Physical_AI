@@ -17,7 +17,8 @@ const config: Config = {
   // Set the production url of your site here
   url: 'https://physical-ai.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/Frontend',
+  baseUrl: '/',
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
