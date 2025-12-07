@@ -1,55 +1,41 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 1.0.0 -> 1.1.0
+- Modified principles: II. Target Audience Focus, Content Development Workflow, Technology Stack and Development Environment, Governance
+- Added sections: None
+- Removed sections: None
+- Templates requiring updates:
+    - .specify/templates/plan-template.md: ⚠ pending
+    - .specify/templates/spec-template.md: ⚠ pending
+    - .specify/templates/tasks-template.md: ⚠ pending
+    - .specify/templates/commands/*.md: ⚠ pending
+- Follow-up TODOs: None.
+-->
+# Physical AI and Humanoid Robotic Textbook Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Modular Content Structure
+The textbook is organized into four distinct models, with each model containing four comprehensive chapters. This modular approach ensures logical progression and easy navigation for readers.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Target Audience Focus
+Content is meticulously designed for **Beginner to Intermediate learners**, ensuring it is **technically accurate and industry-aligned**. The curriculum balances foundational concepts with practical applications in Physical AI and Humanoid Robotics, with explanations that are clear, concise, and assume a basic understanding of programming and mathematics.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Documentation Excellence with Docusaurus
+All textbook content, including code examples and theoretical explanations, will be meticulously documented using Docusaurus. This ensures a consistent, searchable, and user-friendly online presence for the book, facilitating high-quality technical documentation.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Interactive Learning with Integrated RAG Chatbot
+An integrated RAG (Retrieval-Augmented Generation) Chatbot will be developed to enhance the learning experience. The chatbot will provide interactive Q&A, clarify concepts, and offer additional resources based on the textbook content, fostering deeper understanding and engagement with physical AI and humanoid robotics topics.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+## Technology Stack and Development Environment
 
-### [PRINCIPLE_6_NAME]
+The primary technology stack for robust and interactive learning is Docusaurus for documentation. Development for both the textbook content and the integrated RAG Chatbot will leverage modern web development practices and suitable AI/ML frameworks and natural language processing libraries.
 
+## Content Development Workflow
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+Content creation will follow a structured workflow, guided by expert curriculum architects, robotics engineers, and technical documentation specialists. This ensures technical accuracy, industry alignment, and pedagogical effectiveness. The workflow includes outlining, drafting, rigorous technical review, editorial review, and seamless integration into the Docusaurus framework. Regular updates and revisions will be managed through version control. The RAG Chatbot development will involve iterative design, training, and testing phases to ensure optimal performance and learning support.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+All content updates and technical implementations must adhere to the principles outlined in this constitution. Amendments to this constitution require a review process by the core development team to ensure alignment with project goals, technical accuracy, and industry relevance. Versioning of the textbook content and the chatbot will follow semantic versioning guidelines.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.1.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06

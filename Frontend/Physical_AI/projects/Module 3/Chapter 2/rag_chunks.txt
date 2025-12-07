@@ -1,0 +1,71 @@
+RAG KNOWLEDGE CHUNKS - EMBODIED AI AND SITUATED COGNITION
+
+Chunk 1: Embodied AI Principles
+- Intelligence emerges from body-environment interaction
+- Dynamic coupling between perception and action
+- Grounded cognition in physical experience
+- Morphological computation utilization
+- Sensorimotor coordination principles
+
+Chunk 2: Situated Cognition Theory
+- Context-dependent processing mechanisms
+- Action-oriented cognitive systems
+- Distributed cognition across agent and environment
+- Environmental context shaping cognition
+- Situated learning and adaptation
+
+Chunk 3: Embodied Cognitive Architecture
+- Sensorimotor coordination systems
+- Body schema integration and self-awareness
+- Environmental modeling and representation
+- Direct perception-action coupling
+- Morphological computation integration
+
+Chunk 4: Affordance-Based Perception
+- Action possibilities in environment detection
+- Direct perception of environmental affordances
+- Affordance learning and generalization
+- Perception-action coupling mechanisms
+- Task-oriented visual processing
+
+Chunk 5: Sensorimotor Learning
+- Reinforcement learning through interaction
+- Imitation learning from demonstration
+- Self-supervised learning from experience
+- Predictive sensorimotor modeling
+- Intrinsic motivation systems
+
+Chunk 6: Body Schema Integration
+- Representation of body configuration
+- Proprioceptive awareness systems
+- Body-environment interaction models
+- Kinematic and dynamic modeling
+- Self-perception and self-awareness
+
+Chunk 7: Morphological Computation
+- Passive dynamics utilization
+- Mechanical filtering and processing
+- Compliant control strategies
+- Material intelligence principles
+- Bio-inspired design approaches
+
+Chunk 8: Ecological Psychology in Robotics
+- Direct perception principles
+- Gibsonian approach to perception
+- Information pickup from environment
+- Event perception and prediction
+- Task-specific perception systems
+
+Chunk 9: Situated Learning Systems
+- Context-aware learning mechanisms
+- Environmental interaction learning
+- Social learning in context
+- Cultural knowledge transfer
+- Embodied knowledge representation
+
+Chunk 10: Environment-Aware Decision Making
+- Contextual reasoning systems
+- Spatial intelligence and navigation
+- Affordance-based planning
+- Multi-level cognitive integration
+- Adaptive reasoning strategies

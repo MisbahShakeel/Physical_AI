@@ -1,0 +1,1 @@
+[Diagram: Python agent bridging to ROS 2 controller architecture]

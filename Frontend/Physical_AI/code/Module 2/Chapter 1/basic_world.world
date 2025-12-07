@@ -1,0 +1,211 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="basic_world">
+    <!-- Physics engine configuration -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+
+    <!-- Include default ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Include default sun light -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Basic collision object: A box on the ground -->
+    <model name="collision_box">
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="link">
+        <!-- Visual properties -->
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.0 1.0 1.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <!-- Collision properties -->
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.0 1.0 1.0</size>
+            </box>
+          </geometry>
+          <!-- Surface properties for collision -->
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.0</mu>
+                <mu2>1.0</mu2>
+              </ode>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0.1</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <kp>1e+10</kp>
+                <kd>1</kd>
+                <max_vel>100.0</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+
+        <!-- Inertial properties -->
+        <inertial>
+          <mass>10.0</mass>
+          <inertia>
+            <ixx>0.833</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.833</iyy>
+            <iyz>0</iyz>
+            <izz>0.833</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <!-- Another collision object: A sphere -->
+    <model name="collision_sphere">
+      <pose>2 0 1.5 0 0 0</pose>
+      <link name="link">
+        <!-- Visual properties -->
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.3</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <!-- Collision properties -->
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>0.3</radius>
+            </sphere>
+          </geometry>
+          <!-- Surface properties for collision -->
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.5</mu>
+                <mu2>0.5</mu2>
+              </ode>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0.5</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <kp>1e+10</kp>
+                <kd>1</kd>
+                <max_vel>100.0</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+
+        <!-- Inertial properties -->
+        <inertial>
+          <mass>2.0</mass>
+          <inertia>
+            <ixx>0.18</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.18</iyy>
+            <iyz>0</iyz>
+            <izz>0.18</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <!-- A simple wall -->
+    <model name="wall">
+      <pose>-3 0 1 0 0 0</pose>
+      <link name="wall_link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.2 4.0 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.4 0.4 0.4 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.2 4.0 2.0</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.0</mu>
+                <mu2>1.0</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <kp>1e+10</kp>
+                <kd>1</kd>
+                <max_vel>100.0</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+
+        <inertial>
+          <mass>100.0</mass>
+          <inertia>
+            <ixx>133.33</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>16.67</iyy>
+            <iyz>0</iyz>
+            <izz>116.67</izz>
+          </inertia>
+        </inertial>
+      </link>
+    </model>
+
+    <!-- Optional: Add a simple humanoid model reference (will need to be defined separately) -->
+    <!--
+    <include>
+      <uri>model://simple_humanoid</uri>
+      <pose>0 0 1.0 0 0 0</pose>
+    </include>
+    -->
+  </world>
+</sdf>

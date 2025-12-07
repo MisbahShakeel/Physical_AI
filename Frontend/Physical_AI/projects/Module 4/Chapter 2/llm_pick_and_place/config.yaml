@@ -1,0 +1,69 @@
+# Configuration for LLM Pick and Place System
+
+llm_pick_place_controller:
+  # LLM settings
+  llm_model: "gpt-3.5-turbo"
+  llm_temperature: 0.3
+  llm_max_tokens: 1000
+
+  # Robot movement parameters
+  navigation_speed: 0.5  # m/s
+  manipulation_speed: 0.1  # m/s
+  action_timeout: 10.0  # seconds
+
+  # Safety parameters
+  min_distance_to_object: 0.1  # minimum distance for grasping
+  max_navigation_retries: 3
+  grasp_force_limit: 50.0  # force limit for grasping
+
+  # Topic names
+  command_topic: "/pick_place_command"
+  status_topic: "/pick_place_status"
+  feedback_topic: "/pick_place_feedback"
+  odom_topic: "/odom"
+  joint_states_topic: "/joint_states"
+  cmd_vel_topic: "/cmd_vel"
+
+  # Environment settings
+  environment:
+    locations:
+      table:
+        position: {x: 1.0, y: 0.0, z: 0.0}
+        description: "Main work table"
+      shelf:
+        position: {x: 2.0, y: 1.0, z: 0.0}
+        description: "Storage shelf"
+      desk:
+        position: {x: -1.0, y: 1.0, z: 0.0}
+        description: "Work desk"
+      charger:
+        position: {x: 0.0, y: -2.0, z: 0.0}
+        description: "Charging station"
+
+    objects:
+      red_cube:
+        position: {x: 1.0, y: 0.1, z: 0.0}
+        grasped: false
+      blue_sphere:
+        position: {x: 1.2, y: 0.1, z: 0.0}
+        grasped: false
+      green_cylinder:
+        position: {x: 1.4, y: 0.1, z: 0.0}
+        grasped: false
+      book:
+        position: {x: 2.0, y: 1.1, z: 0.0}
+        grasped: false
+
+# ROS 2 specific settings
+ros2:
+  node_name: "llm_pick_place_controller"
+  qos_profile:
+    depth: 10
+    durability: "volatile"
+    reliability: "reliable"
+
+# Planning parameters
+planning:
+  max_plan_length: 20  # maximum number of actions in a plan
+  plan_validation_enabled: true
+  safety_check_frequency: 1.0  # seconds between safety checks

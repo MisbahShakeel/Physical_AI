@@ -1,0 +1,125 @@
+# Configuration for the simulated joint controller
+# This YAML file defines the parameters for the simulated humanoid joint control system
+
+# Controller manager configuration
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz - Update rate for the controller manager (matches the simulation rate)
+
+# Configuration for the simulated joint controllers
+simulated_joint_controllers:
+  ros__parameters:
+    # Define the joints to be controlled
+    controlled_joints:
+      - left_elbow_joint
+      - right_elbow_joint
+      - left_knee_joint
+
+    # PID controller parameters for each joint
+    pid_gains:
+      left_elbow_joint:
+        p: 50.0     # Proportional gain
+        i: 0.1      # Integral gain
+        d: 5.0      # Derivative gain
+        i_clamp: 1.0 # Integral clamp to prevent windup
+        antiwindup: true
+
+      right_elbow_joint:
+        p: 50.0     # Proportional gain
+        i: 0.1      # Integral gain
+        d: 5.0      # Derivative gain
+        i_clamp: 1.0 # Integral clamp to prevent windup
+        antiwindup: true
+
+      left_knee_joint:
+        p: 80.0     # Higher stiffness for leg joint
+        i: 0.2      # Higher integral for leg joint
+        d: 8.0      # Higher derivative for leg joint
+        i_clamp: 2.0 # Higher integral clamp for leg joint
+        antiwindup: true
+
+# Joint limits and safety parameters
+joint_limits:
+  ros__parameters:
+    # Position limits (in radians for revolute joints)
+    left_elbow_joint:
+      has_position_limits: true
+      min_position: -2.356  # Approximately -135 degrees
+      max_position: 2.356   # Approximately 135 degrees
+      has_velocity_limits: true
+      max_velocity: 5.0     # rad/s
+      has_effort_limits: true
+      max_effort: 100.0     # N*m
+
+    right_elbow_joint:
+      has_position_limits: true
+      min_position: -2.356  # Approximately -135 degrees
+      max_position: 2.356   # Approximately 135 degrees
+      has_velocity_limits: true
+      max_velocity: 5.0     # rad/s
+      has_effort_limits: true
+      max_effort: 100.0     # N*m
+
+    left_knee_joint:
+      has_position_limits: true
+      min_position: -0.5    # Limited range for knee
+      max_position: 2.5     # Approximately 143 degrees flexion
+      has_velocity_limits: true
+      max_velocity: 3.0     # rad/s (lower for leg joints)
+      has_effort_limits: true
+      max_effort: 200.0     # Higher effort for leg joints
+
+# Simulation-specific parameters
+simulation:
+  ros__parameters:
+    # Simulation time step (should match the control loop rate)
+    time_step: 0.01  # 10ms (100Hz)
+
+    # Joint dynamics parameters for simulation
+    joint_dynamics:
+      damping_coefficient: 0.1  # For velocity damping in simulation
+      static_friction: 0.05     # Static friction coefficient
+      dynamic_friction: 0.02    # Dynamic friction coefficient
+
+# Trajectory execution parameters
+trajectory_execution:
+  ros__parameters:
+    # Allow trajectory execution
+    allow_trajectory_execution: true
+
+    # Allow the controller to accept goals with only position or position and velocity
+    allow_partial_joints_goal: false
+
+    # Default trajectory execution velocity scaling
+    default_velocity_scaling_factor: 1.0
+
+    # Default trajectory execution acceleration scaling
+    default_acceleration_scaling_factor: 1.0
+
+# Command interfaces
+command_interfaces:
+  ros__parameters:
+    # Available command interfaces
+    position: true
+    velocity: true
+    effort: true
+
+# State interfaces
+state_interfaces:
+  ros__parameters:
+    # Available state interfaces
+    position: true
+    velocity: true
+    effort: true
+
+# Controller performance monitoring
+performance_monitoring:
+  ros__parameters:
+    # Enable performance monitoring
+    enable_monitoring: true
+
+    # Control error threshold for warnings (in radians)
+    position_error_threshold: 0.1
+
+    # Maximum allowed control effort (to detect potential issues)
+    max_control_effort: 500.0

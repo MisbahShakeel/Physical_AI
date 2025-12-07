@@ -1,0 +1,1 @@
+[Diagram: Gazebo physics engine interaction with a URDF robot model]

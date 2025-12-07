@@ -1,0 +1,80 @@
+# Isaac Sim Configuration for Humanoid Locomotion Policy Training
+
+# Environment settings
+env:
+  numEnvs: 4096                    # Number of parallel environments
+  envSpacing: 5.0                  # Spacing between environments
+  episodeLength: 1000              # Maximum episode length
+  enableDebugVis: False            # Enable debug visualization
+
+  # Domain randomization settings
+  domainRandomization:
+    randomize: True
+    randomization_params:
+      friction:
+        range: [0.5, 1.5]
+        distribution: "uniform"
+      mass:
+        range: [0.8, 1.2]
+        distribution: "uniform"
+      damping:
+        range: [0.5, 1.5]
+        distribution: "uniform"
+      restitution:
+        range: [0.0, 0.2]
+        distribution: "uniform"
+
+# Humanoid robot settings
+humanoid:
+  # Robot asset path (in real implementation, this would point to actual USD file)
+  asset:
+    assetRoot: "path/to/humanoid/asset"
+    assetFileName: "humanoid.usd"
+    fixBaseLink: False
+    flipVisualFrames: True
+
+  # Joint settings
+  jointParams:
+    defaultDamping: 0.1
+    defaultStiffness: 500.0
+    defaultForceLimit: 100.0
+
+  # Task settings
+  task:
+    name: "locomotion"
+    targetVelocity: [1.0, 0.0, 0.0]  # Target velocity in x direction
+    targetDistance: 10.0              # Target distance to reach
+    headingWeight: 0.5                # Weight for heading reward
+    upWeight: 0.1                     # Weight for upright posture
+    actionsCost: 0.001                # Penalty for action magnitude
+    energyCost: 0.05                  # Penalty for energy consumption
+
+# Training settings
+rl:
+  device: "cuda:0"
+  seed: 42
+  maxIterations: 1000000
+  saveInterval: 50000
+  printStats: True
+  gamma: 0.99
+  lam: 0.95
+  learningRate: 1e-3
+  numLearningEpochs: 5
+  num_mini_batches: 4
+  clip_param: 0.2
+  value_loss_coef: 2.0
+  entropy_coef: 0.0
+  use_clipped_value_loss: True
+  clip_action: True
+
+# Sensor settings
+sensors:
+  imu:
+    enabled: True
+    noise: 0.01
+  force_torque:
+    enabled: True
+    noise: 0.001
+  camera:
+    enabled: False  # Enable for vision-based tasks
+    resolution: [640, 480]

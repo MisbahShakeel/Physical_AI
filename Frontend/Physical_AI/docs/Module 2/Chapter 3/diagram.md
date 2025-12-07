@@ -1,0 +1,1 @@
+[Diagram: Computer vision pipeline showing image acquisition from camera, processing with OpenCV/PCL, and integration with robot navigation and manipulation systems]

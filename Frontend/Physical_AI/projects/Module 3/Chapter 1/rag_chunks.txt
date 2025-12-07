@@ -1,0 +1,71 @@
+RAG KNOWLEDGE CHUNKS - AI-ROBOT BRAIN ARCHITECTURE
+
+Chunk 1: Cognitive Architecture Components
+- Perception system for multimodal sensory processing
+- Memory system with episodic, semantic, and procedural components
+- Reasoning system for logical and probabilistic inference
+- Planning system for task and motion planning
+- Integration of all components in unified framework
+
+Chunk 2: LLM Integration in AI-Robot Brain
+- Natural language command interpretation
+- Knowledge integration and commonsense reasoning
+- Task planning and decomposition
+- Dialogue management and interaction
+- World knowledge access and application
+
+Chunk 3: VLM Integration in AI-Robot Brain
+- Multimodal perception and understanding
+- Visual question answering capabilities
+- Instruction following with visual grounding
+- Object manipulation based on descriptions
+- Scene understanding and spatial reasoning
+
+Chunk 4: Humanoid Control Integration
+- Motor control hierarchy (high, mid, low level)
+- Embodied cognition principles
+- Action-perception coupling
+- Sensorimotor learning
+- Behavior generation systems
+
+Chunk 5: Attention Mechanisms
+- Selective attention for relevant information
+- Multi-modal attention coordination
+- Task-driven attention allocation
+- Computational resource management
+- Real-time scheduling constraints
+
+Chunk 6: Learning Systems
+- Supervised learning from demonstrations
+- Reinforcement learning for behavior improvement
+- Unsupervised learning for pattern discovery
+- Skill refinement and adaptation
+- Experience-based performance optimization
+
+Chunk 7: Safety and Reliability
+- Physical safety boundaries and constraints
+- Social safety considerations
+- Emergency stop mechanisms
+- Fault detection and recovery
+- Uncertainty quantification
+
+Chunk 8: Memory Systems
+- Short-term working memory for immediate tasks
+- Long-term episodic memory for experiences
+- Semantic memory for knowledge representation
+- Procedural memory for learned skills
+- Memory consolidation and retrieval
+
+Chunk 9: Executive Control
+- High-level task coordination
+- Resource allocation management
+- Mode switching between behaviors
+- Priority-based task scheduling
+- System state monitoring
+
+Chunk 10: Evaluation and Validation
+- Component-level validation approaches
+- Integration testing methodologies
+- Behavioral validation metrics
+- Safety compliance verification
+- Performance benchmarking techniques

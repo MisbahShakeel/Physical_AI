@@ -1,0 +1,85 @@
+     1→RAG KNOWLEDGE CHUNKS - TRAINING & DEPLOYING AI POLICIES FROM SIMULATION TO REAL ROBOTS
+     2→
+     3→Chunk 1: Sim-to-Real Transfer Principles
+     4→- Training AI policies in simulation environments
+     5→- Deploying policies to real robotic systems
+     6→- Addressing the reality gap between simulation and reality
+     7→- Safety considerations for real-world deployment
+     8→- Evaluation metrics for transfer success
+     9→
+    10→Chunk 2: The Reality Gap Problem
+    11→- Differences between simulated and real environments
+    12→- Physical properties discrepancies (friction, mass, dynamics)
+    13→- Sensor noise and limitations
+    14→- Environmental condition variations
+    15→- Unmodeled dynamics in simulation
+    16→
+    17→Chunk 3: Domain Randomization Techniques
+    18→- Randomizing physical properties (mass, friction, damping)
+    19→- Varying environmental conditions (lighting, textures)
+    20→- Adding sensor noise and delays
+    21→- Randomizing actuator models
+    22→- Systematic domain randomization strategies
+    23→
+    24→Chunk 4: Isaac Sim for Policy Training
+    25→- Photorealistic simulation environment
+    26→- Physically accurate dynamics simulation
+    27→- Domain randomization capabilities
+    28→- Integration with reinforcement learning frameworks
+    29→- ROS 2 bridge for deployment
+    30→
+    31→Chunk 5: Policy Transfer Techniques
+    32→- System identification for parameter matching
+    33→- Adversarial domain adaptation
+    34→- Meta-learning for rapid adaptation
+    35→- Action space remapping between domains
+    36→- Control protocol adaptation
+    37→
+    38→Chunk 6: Reinforcement Learning in Simulation
+    39→- Environment design for training
+    40→- Reward shaping strategies
+    41→- Safety constraints during training
+    42→- Parallel environment execution
+    43→- Training algorithm selection
+    44→
+    45→Chunk 7: ROS 2 Integration
+    46→- Mapping simulation action spaces to real robot controls
+    47→- Handling timing and communication protocol differences
+    48→- Safety checks for real-world deployment
+    49→- Monitoring systems for deployed policies
+    50→- Joint command interfaces
+    51→
+    52→Chunk 8: Locomotion Policy Transfer
+    53→- Balance maintenance across domains
+    54→- Foot-ground contact modeling
+    55→- Terrain adaptation strategies
+    56→- Dynamic stability preservation
+    57→- Gait pattern transfer
+    58→
+    59→Chunk 9: Domain Adaptation Strategies
+    60→- Online adaptation based on real-world observations
+    61→- Offline adaptation with limited real data
+    62→- Transfer learning from simulation models
+    63→- Model-free vs model-based approaches
+    64→- Few-shot adaptation techniques
+    65→
+    66→Chunk 10: Reality Gap Mitigation
+    67→- Systematic parameter identification
+    68→- High-fidelity sensor simulation
+    69→- Accurate actuator modeling
+    70→- Environmental condition matching
+    71→- Systematic domain randomization
+    72→
+    73→Chunk 11: Safety Considerations
+    74→- Safety monitoring and intervention systems
+    75→- Gradual deployment strategies
+    76→- Performance validation protocols
+    77→- Emergency stop mechanisms
+    78→- Joint limit and velocity constraints
+    79→
+    80→Chunk 12: Evaluation Metrics for Transfer
+    81→- Task performance in real-world deployment
+    82→- Policy robustness to environmental changes
+    83→- Safety and reliability measures
+    84→- Adaptation speed and efficiency
+    85→- Reward transfer ratio and degradation assessment

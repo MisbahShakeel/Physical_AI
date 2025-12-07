@@ -1,0 +1,61 @@
+RAG KNOWLEDGE CHUNKS - COMPUTER VISION AND DEPTH PERCEPTION
+
+Chunk 1: OpenCV-ROS 2 Integration
+- cv_bridge package converts between sensor_msgs/Image and cv::Mat
+- Essential for real-time image processing in ROS 2
+- Enables use of OpenCV algorithms with ROS image streams
+- Key for 2D computer vision applications in robotics
+
+Chunk 2: Point Cloud Library (PCL) in ROS 2
+- Provides algorithms for 3D point cloud processing
+- sensor_msgs/PointCloud2 is the ROS message type
+- Used for filtering, segmentation, feature extraction
+- Critical for 3D perception in robotics
+
+Chunk 3: Depth Perception Fundamentals
+- Depth cameras provide both intensity and depth information
+- Depth data enables 3D reconstruction and spatial understanding
+- Camera intrinsics required for accurate 3D conversion
+- Depth-dependent noise characteristics affect accuracy
+
+Chunk 4: Computer Vision Pipeline in ROS 2
+- Image acquisition from camera topics
+- Preprocessing with cv_bridge conversion
+- Processing with OpenCV/PCL algorithms
+- Post-processing and publishing results
+
+Chunk 5: Point Cloud Processing Pipeline
+- Acquisition from point cloud topics
+- Filtering to remove noise and outliers
+- Segmentation to separate objects/regions
+- Feature extraction for recognition tasks
+
+Chunk 6: Camera Calibration
+- Determines intrinsic parameters (focal length, distortion)
+- Determines extrinsic parameters (position, orientation)
+- Essential for accurate depth perception
+- Affects 3D reconstruction quality
+
+Chunk 7: Coordinate System Transformations
+- Camera frame to robot frame transformations
+- Uses tf2 system in ROS 2
+- Critical for integrating vision with navigation
+- Required for spatial reasoning
+
+Chunk 8: Object Detection Approaches
+- Template matching for predefined patterns
+- Feature-based detection (SIFT, SURF, ORB)
+- Deep learning methods (YOLO, SSD)
+- 3D object recognition with point clouds
+
+Chunk 9: Performance Considerations
+- Real-time processing requirements for robotics
+- Multi-threading for concurrent processing
+- GPU acceleration for intensive algorithms
+- Downsampling for faster computation
+
+Chunk 10: Vision System Integration
+- Connects with navigation systems
+- Integrates with manipulation planning
+- Supports SLAM applications
+- Enables human-robot interaction

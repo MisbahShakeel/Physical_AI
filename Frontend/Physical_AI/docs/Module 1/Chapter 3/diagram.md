@@ -1,0 +1,1 @@
+[Diagram: URDF structure of a simple humanoid arm with links and joints]

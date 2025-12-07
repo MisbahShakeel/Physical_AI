@@ -1,0 +1,108 @@
+# Configuration for a single joint controller in ROS 2 Control
+# This YAML file defines the controller configuration for a humanoid robot joint
+
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz - Update rate for the controller manager
+
+    # Define the joint trajectory controller for position, velocity, and acceleration control
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    # Define the forward position controller for direct position control
+    joint_group_position_controller:
+      type: position_controllers/JointGroupPositionController
+
+    # Define the forward velocity controller for direct velocity control
+    joint_group_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+    # Define the forward effort controller for direct effort control
+    joint_group_effort_controller:
+      type: effort_controllers/JointGroupEffortController
+
+    # Define the joint state broadcaster for publishing joint states
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+# Configuration for the joint trajectory controller
+joint_trajectory_controller:
+  ros__parameters:
+    # Joint name for the humanoid joint (e.g., left elbow, right knee, etc.)
+    joints:
+      - left_elbow_joint
+
+    # Command interfaces: which interfaces the controller accepts commands from
+    command_interfaces:
+      - position
+      - velocity
+
+    # State interfaces: which interfaces the controller reads feedback from
+    state_interfaces:
+      - position
+      - velocity
+
+    # Allow the controller to accept goals with only position or position and velocity
+    allow_partial_joints_goal: false
+    open_loop_control: false
+
+# Configuration for the joint group position controller
+joint_group_position_controller:
+  ros__parameters:
+    joints:
+      - left_elbow_joint
+
+# Configuration for the joint group velocity controller
+joint_group_velocity_controller:
+  ros__parameters:
+    joints:
+      - left_elbow_joint
+
+# Configuration for the joint group effort controller
+joint_group_effort_controller:
+  ros__parameters:
+    joints:
+      - left_elbow_joint
+
+# Configuration for the joint state broadcaster
+joint_state_broadcaster:
+  ros__parameters:
+    joints:
+      - left_elbow_joint
+    interfaces:
+      - position
+      - velocity
+      - effort
+
+# Hardware interface configuration
+hardware:
+  ros__parameters:
+    # Configuration for simulated hardware interface
+    # This would be different for real hardware
+    simulated: true
+    # Update rate for hardware interface
+    update_rate: 100
+
+# Safety limits for the joint
+safety_limits:
+  ros__parameters:
+    # Position limits (in radians for revolute joints)
+    left_elbow_joint:
+      has_soft_limits: true
+      k_position: 10.0
+      k_velocity: 1.0
+      soft_lower_limit: -2.356  # Approximately -135 degrees
+      soft_upper_limit: 2.356   # Approximately 135 degrees
+      hard_lower_limit: -2.5    # Hard limit slightly beyond soft limit
+      hard_upper_limit: 2.5     # Hard limit slightly beyond soft limit
+
+# PID controller parameters for the joint
+pid_gains:
+  ros__parameters:
+    # PID gains for position control
+    left_elbow_joint:
+      p: 100.0    # Proportional gain
+      i: 0.01     # Integral gain
+      d: 10.0     # Derivative gain
+      i_clamp: 1.0 # Integral clamp to prevent windup
+      antiwindup: true  # Enable anti-windup mechanism

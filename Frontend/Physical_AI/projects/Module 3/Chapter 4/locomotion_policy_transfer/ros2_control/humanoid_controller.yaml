@@ -1,0 +1,96 @@
+# ROS 2 Controller Configuration for Humanoid Robot Policy Execution
+
+controller_manager:
+  ros__parameters:
+    update_rate: 50  # Hz
+
+    # Joint State Broadcaster
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    # Humanoid Joint Group Controller
+    humanoid_joint_group_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+humanoid_joint_group_controller:
+  ros__parameters:
+    joints:
+      - left_hip_joint
+      - left_knee_joint
+      - left_ankle_joint
+      - right_hip_joint
+      - right_knee_joint
+      - right_ankle_joint
+      - left_shoulder_joint
+      - left_elbow_joint
+      - left_wrist_joint
+      - right_shoulder_joint
+      - right_elbow_joint
+      - right_wrist_joint
+      - torso_joint
+      - neck_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    # Safety limits
+    constraints:
+      goal_time: 0.5
+      stopped_velocity_tolerance: 0.01
+
+      left_hip_joint:
+        trajectory: 1.0
+        goal: 0.1
+      left_knee_joint:
+        trajectory: 1.0
+        goal: 0.1
+      left_ankle_joint:
+        trajectory: 1.0
+        goal: 0.1
+      right_hip_joint:
+        trajectory: 1.0
+        goal: 0.1
+      right_knee_joint:
+        trajectory: 1.0
+        goal: 0.1
+      right_ankle_joint:
+        trajectory: 1.0
+        goal: 0.1
+      left_shoulder_joint:
+        trajectory: 1.0
+        goal: 0.1
+      left_elbow_joint:
+        trajectory: 1.0
+        goal: 0.1
+      left_wrist_joint:
+        trajectory: 1.0
+        goal: 0.1
+      right_shoulder_joint:
+        trajectory: 1.0
+        goal: 0.1
+      right_elbow_joint:
+        trajectory: 1.0
+        goal: 0.1
+      right_wrist_joint:
+        trajectory: 1.0
+        goal: 0.1
+      torso_joint:
+        trajectory: 1.0
+        goal: 0.1
+      neck_joint:
+        trajectory: 1.0
+        goal: 0.1
+
+# Policy execution parameters
+policy_execution:
+  ros__parameters:
+    control_frequency: 20  # Hz
+    safety_margin: 0.1     # Safety margin for joint limits
+    max_velocity: 1.0      # Maximum joint velocity (rad/s)
+    max_acceleration: 2.0  # Maximum joint acceleration (rad/s^2)
+    enable_safety_monitoring: true
+    emergency_stop_threshold: 0.5  # Threshold for emergency stop

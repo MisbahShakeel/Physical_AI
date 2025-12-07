@@ -1,0 +1,130 @@
+# Configuration for Autonomous Humanoid Capstone Project
+
+autonomous_humanoid:
+  # System parameters
+  main_loop_rate: 10  # Hz
+  safety_threshold: 0.8
+  task_timeout: 60.0  # seconds
+  max_action_queue_size: 10
+
+  # Robot movement parameters
+  linear_speed: 0.5  # m/s
+  angular_speed: 0.5  # rad/s
+  min_distance_to_object: 0.1  # meters
+
+  # Perception parameters
+  vision:
+    detection_confidence_threshold: 0.7
+    max_detection_distance: 3.0  # meters
+    object_classes:
+      - person
+      - bottle
+      - cup
+      - fork
+      - knife
+      - spoon
+      - bowl
+      - banana
+      - apple
+      - sandwich
+      - orange
+      - broccoli
+      - carrot
+      - hot dog
+      - pizza
+      - donut
+      - chair
+      - couch
+      - potted plant
+      - bed
+      - dining table
+      - toilet
+      - tv
+      - laptop
+      - mouse
+      - remote
+      - keyboard
+      - cell phone
+      - microwave
+      - oven
+      - toaster
+      - sink
+      - refrigerator
+      - book
+      - clock
+      - vase
+      - scissors
+
+  # Navigation parameters
+  navigation:
+    obstacle_threshold: 0.5  # meters
+    goal_tolerance: 0.2  # meters
+    max_linear_speed: 0.5
+    max_angular_speed: 1.0
+    min_obstacle_distance: 0.3
+
+  # Cognitive system parameters
+  cognitive:
+    memory_size: 100  # items in short-term memory
+    planning_horizon: 10  # steps ahead to plan
+    reasoning_timeout: 5.0  # seconds for reasoning operations
+
+  # Safety parameters
+  safety:
+    joint_limit_threshold: 3.0  # radians
+    emergency_stop_distance: 0.3  # meters
+    max_joint_velocity: 2.0  # rad/s
+
+  # Human interaction parameters
+  human_interaction:
+    trust_build_rate: 0.01  # per interaction
+    max_trust_level: 1.0
+    min_trust_level: 0.0
+    feedback_frequency: 10.0  # seconds between status updates
+
+  # Topic names
+  topics:
+    voice_commands: "/voice_commands"
+    vla_detections: "/vla/detections"
+    lidar_scan: "/scan"
+    odometry: "/odom"
+    joint_states: "/joint_states"
+    cmd_vel: "/cmd_vel"
+    system_status: "/autonomous_humanoid/status"
+    feedback: "/autonomous_humanoid/feedback"
+    speech: "/autonomous_humanoid/speech"
+
+# LLM integration settings (if using)
+llm:
+  model: "gpt-3.5-turbo"
+  temperature: 0.3
+  max_tokens: 500
+  timeout: 10.0  # seconds
+
+# Vision processing settings
+vision_processing:
+  image_processing_rate: 5  # Hz
+  detection_threshold: 0.7
+  tracking_enabled: true
+  segmentation_enabled: false
+
+# Audio processing settings
+audio_processing:
+  sample_rate: 16000
+  channels: 1
+  voice_activity_threshold: 0.3
+  noise_suppression: true
+
+# ROS 2 specific settings
+ros2:
+  node_name: "autonomous_humanoid"
+  qos_profile:
+    depth: 10
+    durability: "volatile"
+    reliability: "reliable"
+
+# System health monitoring
+health_monitoring:
+  check_interval: 1.0  # seconds
+  critical_component_timeout: 5.0  # seconds
+  recovery_attempts: 3

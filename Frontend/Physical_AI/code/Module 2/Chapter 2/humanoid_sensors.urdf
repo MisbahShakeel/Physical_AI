@@ -1,0 +1,773 @@
+<?xml version="1.0"?>
+<robot name="humanoid_with_sensors">
+  <!-- Base link -->
+  <link name="base_link"/>
+
+  <!-- Main body/torso link -->
+  <link name="torso">
+    <inertial>
+      <mass value="15.0"/>
+      <origin xyz="0 0 0.4" rpy="0 0 0"/>
+      <inertia ixx="1.2" ixy="0.0" ixz="0.0" iyy="1.2" iyz="0.0" izz="0.6"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.4" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.4 0.8"/>
+      </geometry>
+      <material name="light_blue">
+        <color rgba="0.6 0.8 1.0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.4" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.4 0.8"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint connecting base to torso -->
+  <joint name="base_to_torso" type="fixed">
+    <parent link="base_link"/>
+    <child link="torso"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Head link -->
+  <link name="head">
+    <inertial>
+      <mass value="3.0"/>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.03"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.15"/>
+      </geometry>
+      <material name="skin">
+        <color rgba="0.9 0.8 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.15"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Neck joint -->
+  <joint name="neck_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="head"/>
+    <origin xyz="0 0 0.8" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="10" velocity="2"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <!-- LiDAR mount link (placed on top of the head) -->
+  <link name="lidar_mount">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.02" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint connecting head to LiDAR mount -->
+  <joint name="head_to_lidar_mount" type="fixed">
+    <parent link="head"/>
+    <child link="lidar_mount"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  </joint>
+
+  <!-- LiDAR sensor link -->
+  <link name="lidar_link">
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.0002"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.02" radius="0.04"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.02" radius="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint connecting LiDAR mount to LiDAR sensor -->
+  <joint name="lidar_mount_joint" type="fixed">
+    <parent link="lidar_mount"/>
+    <child link="lidar_link"/>
+    <origin xyz="0 0 0.03" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Depth Camera mount link (placed on front of head) -->
+  <link name="camera_mount">
+    <inertial>
+      <mass value="0.05"/>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <inertia ixx="0.00005" ixy="0.0" ixz="0.0" iyy="0.00005" iyz="0.0" izz="0.00005"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.06 0.02"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.06 0.02"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint connecting head to depth camera mount -->
+  <joint name="head_to_camera_mount" type="fixed">
+    <parent link="head"/>
+    <child link="camera_mount"/>
+    <origin xyz="0.08 0 0.1" rpy="0 0 0"/>  <!-- Position on front of head -->
+  </joint>
+
+  <!-- Depth Camera link -->
+  <link name="depth_camera_link">
+    <inertial>
+      <mass value="0.1"/>
+      <origin xyz="0 0 0.015" rpy="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0.015" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.03"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.015" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.03 0.05 0.03"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint connecting camera mount to depth camera -->
+  <joint name="camera_mount_joint" type="fixed">
+    <parent link="camera_mount"/>
+    <child link="depth_camera_link"/>
+    <origin xyz="0 0 0.025" rpy="0 0 0"/>
+  </joint>
+
+  <!-- IMU mount link (placed in torso) -->
+  <link name="imu_mount">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint connecting torso to IMU mount -->
+  <joint name="torso_to_imu" type="fixed">
+    <parent link="torso"/>
+    <child link="imu_mount"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>  <!-- Center of torso -->
+  </joint>
+
+  <!-- Left shoulder link -->
+  <link name="left_shoulder">
+    <inertial>
+      <mass value="2.0"/>
+      <origin xyz="0 -0.05 0" rpy="0 0 0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.015"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 -0.05 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.15" radius="0.06"/>
+      </geometry>
+      <material name="dark_gray">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.05 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.15" radius="0.06"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Left shoulder joint -->
+  <joint name="left_shoulder_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="left_shoulder"/>
+    <origin xyz="0 0.225 0.5" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="100" velocity="2"/>
+    <dynamics damping="1.0" friction="0.5"/>
+  </joint>
+
+  <!-- Left upper arm link -->
+  <link name="left_upper_arm">
+    <inertial>
+      <mass value="2.0"/>
+      <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+      <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.006"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.3" radius="0.04"/>
+      </geometry>
+      <material name="light_gray">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.3" radius="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Left elbow joint -->
+  <joint name="left_elbow_joint" type="revolute">
+    <parent link="left_shoulder"/>
+    <child link="left_upper_arm"/>
+    <origin xyz="0 -0.1 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.36" upper="2.36" effort="100" velocity="1.5"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+
+  <!-- Left forearm link -->
+  <link name="left_forearm">
+    <inertial>
+      <mass value="1.5"/>
+      <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.004"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.24" radius="0.035"/>
+      </geometry>
+      <material name="medium_gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.24" radius="0.035"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Left wrist joint -->
+  <joint name="left_wrist_joint" type="revolute">
+    <parent link="left_upper_arm"/>
+    <child link="left_forearm"/>
+    <origin xyz="0 0 -0.3" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-1.57" upper="1.57" effort="50" velocity="2.5"/>
+    <dynamics damping="0.5" friction="0.2"/>
+  </joint>
+
+  <!-- Right shoulder link -->
+  <link name="right_shoulder">
+    <inertial>
+      <mass value="2.0"/>
+      <origin xyz="0 0.05 0" rpy="0 0 0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.015"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0.05 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.15" radius="0.06"/>
+      </geometry>
+      <material name="dark_gray">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0.05 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.15" radius="0.06"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right shoulder joint -->
+  <joint name="right_shoulder_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="right_shoulder"/>
+    <origin xyz="0 -0.225 0.5" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="100" velocity="2"/>
+    <dynamics damping="1.0" friction="0.5"/>
+  </joint>
+
+  <!-- Right upper arm link -->
+  <link name="right_upper_arm">
+    <inertial>
+      <mass value="2.0"/>
+      <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+      <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.006"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.3" radius="0.04"/>
+      </geometry>
+      <material name="light_gray">
+        <color rgba="0.7 0.7 0.7 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.3" radius="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right elbow joint -->
+  <joint name="right_elbow_joint" type="revolute">
+    <parent link="right_shoulder"/>
+    <child link="right_upper_arm"/>
+    <origin xyz="0 0.1 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.36" upper="2.36" effort="100" velocity="1.5"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+
+  <!-- Right forearm link -->
+  <link name="right_forearm">
+    <inertial>
+      <mass value="1.5"/>
+      <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.004"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.24" radius="0.035"/>
+      </geometry>
+      <material name="medium_gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.24" radius="0.035"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right wrist joint -->
+  <joint name="right_wrist_joint" type="revolute">
+    <parent link="right_upper_arm"/>
+    <child link="right_forearm"/>
+    <origin xyz="0 0 -0.3" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-1.57" upper="1.57" effort="50" velocity="2.5"/>
+    <dynamics damping="0.5" friction="0.2"/>
+  </joint>
+
+  <!-- Left hip link -->
+  <link name="left_hip">
+    <inertial>
+      <mass value="2.0"/>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.015"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.07"/>
+      </geometry>
+      <material name="dark_gray">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Left hip joint -->
+  <joint name="left_hip_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="left_hip"/>
+    <origin xyz="0 0.1 -0.1" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.5" upper="0.5" effort="150" velocity="1.5"/>
+    <dynamics damping="1.5" friction="0.8"/>
+  </joint>
+
+  <!-- Right hip link -->
+  <link name="right_hip">
+    <inertial>
+      <mass value="2.0"/>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <inertia ixx="0.015" ixy="0.0" ixz="0.0" iyy="0.015" iyz="0.0" izz="0.015"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.07"/>
+      </geometry>
+      <material name="dark_gray">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.07"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Right hip joint -->
+  <joint name="right_hip_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="right_hip"/>
+    <origin xyz="0 -0.1 -0.1" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.5" upper="0.5" effort="150" velocity="1.5"/>
+    <dynamics damping="1.5" friction="0.8"/>
+  </joint>
+
+  <!-- Gazebo-specific properties for the LiDAR sensor -->
+  <gazebo reference="lidar_link">
+    <sensor type="ray" name="humanoid_lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>30.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="lidar_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/humanoid/laser_scan</topicName>
+        <frameName>lidar_link</frameName>
+        <min_range>0.1</min_range>
+        <max_range>30.0</max_range>
+        <update_rate>10</update_rate>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- Gazebo-specific properties for the depth camera sensor -->
+  <gazebo reference="depth_camera_link">
+    <sensor type="depth" name="humanoid_depth_camera">
+      <always_on>true</always_on>
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.047</horizontal_fov> <!-- 60 degrees -->
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>10.0</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>30.0</updateRate>
+        <cameraName>head_camera</cameraName>
+        <imageTopicName>rgb/image_raw</imageTopicName>
+        <depthImageTopicName>depth/image_raw</depthImageTopicName>
+        <pointCloudTopicName>depth/points</pointCloudTopicName>
+        <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+        <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+        <frameName>depth_camera_link</frameName>
+        <pointCloudCutoff>0.1</pointCloudCutoff>
+        <pointCloudCutoffMax>5.0</pointCloudCutoffMax>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- Gazebo-specific properties for the IMU sensor -->
+  <gazebo reference="imu_mount">
+    <sensor type="imu" name="humanoid_imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <imu>
+        <noise>
+          <accel>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.1e-3</bias_mean>
+            <bias_stddev>0.1e-4</bias_stddev>
+          </accel>
+          <gyro>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>1.1e-4</stddev>
+            <bias_mean>0.1e-6</bias_mean>
+            <bias_stddev>0.1e-8</bias_stddev>
+          </gyro>
+        </noise>
+      </imu>
+      <plugin name="imu_controller" filename="libgazebo_ros_imu.so">
+        <topicName>/humanoid/imu/data</topicName>
+        <bodyName>imu_mount</bodyName>
+        <frameName>imu_mount</frameName>
+        <serviceName>/humanoid/imu/service</serviceName>
+        <gaussianNoise>1.7e-2</gaussianNoise>
+        <updateRate>100.0</updateRate>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- Gazebo-specific properties for other links -->
+  <gazebo reference="torso">
+    <material>Gazebo/Blue</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="head">
+    <material>Gazebo/Yellow</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="lidar_mount">
+    <material>Gazebo/Black</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="camera_mount">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="depth_camera_link">
+    <material>Gazebo/Black</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="imu_mount">
+    <material>Gazebo/Red</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="left_shoulder">
+    <material>Gazebo/Black</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="left_upper_arm">
+    <material>Gazebo/Gray</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="left_forearm">
+    <material>Gazebo/Gray</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="right_shoulder">
+    <material>Gazebo/Black</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="right_upper_arm">
+    <material>Gazebo/Gray</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="right_forearm">
+    <material>Gazebo/Gray</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="left_hip">
+    <material>Gazebo/Black</material>
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="right_hip">
+    <material>Gazebo/Black</material>
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <!-- Transmission elements for ROS control -->
+  <transmission name="left_shoulder_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_shoulder_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_shoulder_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="left_elbow_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="left_elbow_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="left_elbow_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="right_shoulder_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_shoulder_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_shoulder_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="right_elbow_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="right_elbow_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="right_elbow_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="neck_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="neck_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="neck_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>

@@ -1,0 +1,1 @@
+[Diagram: AI integration architecture showing LLMs and VLMs connected to ROS 2 nodes, with natural language input, visual perception, and robotic action output]

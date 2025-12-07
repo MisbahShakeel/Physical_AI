@@ -1,0 +1,39 @@
+gazebo:
+  label: Gazebo Simulation
+  permalink: /gazebo
+  description: Articles about Gazebo robot simulation environment
+
+ros:
+  label: ROS
+  permalink: /ros
+  description: Articles about Robot Operating System (ROS) integration
+
+robotics:
+  label: Robotics
+  permalink: /robotics
+  description: General robotics concepts and applications
+
+physical-ai:
+  label: Physical AI
+  permalink: /physical-ai
+  description: Articles about AI applied to physical systems
+
+simulation:
+  label: Simulation
+  permalink: /simulation
+  description: Robot simulation techniques and tools
+
+humanoid:
+  label: Humanoid Robotics
+  permalink: /humanoid
+  description: Articles about humanoid robot development
+
+ai:
+  label: Artificial Intelligence
+  permalink: /ai
+  description: AI algorithms for robotics applications
+
+introduction:
+  label: Introduction
+  permalink: /introduction
+  description: Introductory articles to robotics concepts

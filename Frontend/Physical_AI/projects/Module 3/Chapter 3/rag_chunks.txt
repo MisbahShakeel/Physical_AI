@@ -1,0 +1,71 @@
+     1→RAG KNOWLEDGE CHUNKS - HUMAN-ROBOT INTERACTION AND SOCIAL COGNITION
+     2→
+     3→Chunk 1: Human-Robot Interaction (HRI) Principles
+     4→- Natural interaction design for human-robot systems
+     5→- Safety and comfort in human-robot proximity
+     6→- Communication modalities and integration
+     7→- Trust and acceptance factors
+     8→- Social acceptance metrics and evaluation
+     9→
+    10→Chunk 2: Social Cognition in Robotics
+    11→- Social signal processing mechanisms
+    12→- Social attention and joint attention
+    13→- Social learning and imitation
+    14→- Cultural adaptation in robots
+    15→- Social norm compliance
+    16→
+    17→Chunk 3: Theory of Mind (ToM) in Robots
+    18→- Mental state attribution to humans
+    19→- Belief tracking and knowledge state modeling
+    20→- Intention prediction and understanding
+    21→- Perspective taking capabilities
+    22→- False belief understanding
+    23→
+    24→Chunk 4: Social Signal Processing
+    25→- Gesture recognition and interpretation
+    26→- Gaze tracking and attention detection
+    27→- Facial expression recognition
+    28→- Proxemics and spatial relationship analysis
+    29→- Vocal and speech pattern analysis
+    30→
+    31→Chunk 5: Social Decision Making
+    32→- Social utility functions and optimization
+    33→- Norm compliance in robot behavior
+    34→- Trust and cooperation mechanisms
+    35→- Group interaction and coordination
+    36→- Cultural sensitivity and adaptation
+    37→
+    38→Chunk 6: Social Communication
+    39→- Multimodal communication integration
+    40→- Nonverbal communication systems
+    41→- Conversational agents and dialogue
+    42→- Context-appropriate communication
+    43→- Adaptive communication styles
+    44→
+    45→Chunk 7: Trust Building Mechanisms
+    46→- Consistency between words and actions
+    47→- Transparency in robot decision-making
+    48→- Reliability and predictability
+    49→- Appropriate vulnerability and humility
+    50→- Trust recovery after errors
+    51→
+    52→Chunk 8: Emotion Recognition and Response
+    53→- Facial expression analysis
+    54→- Emotional state attribution
+    55→- Appropriate emotional responses
+    56→- Mood detection and adaptation
+    57→- Empathetic behavior generation
+    58→
+    59→Chunk 9: Proxemics and Spatial Behavior
+    60→- Personal space maintenance
+    61→- Social distance adaptation
+    62→- Spatial positioning for interaction
+    63→- Cultural proxemics variations
+    64→- Group spatial dynamics
+    65→
+    66→Chunk 10: Ethical Considerations in Social Robotics
+    67→- Privacy and data protection
+    68→- Human autonomy and agency
+    69→- Bias prevention and fairness
+    70→- Dependency and manipulation concerns
+    71→- Informed consent and transparency

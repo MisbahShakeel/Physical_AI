@@ -1,0 +1,1 @@
+[Diagram: Embodied AI architecture showing the interaction between robot body, cognitive systems, and environment, with sensorimotor loops and affordance perception]

@@ -1,0 +1,1 @@
+[Diagram: ROS 2 Control architecture for a single humanoid joint]

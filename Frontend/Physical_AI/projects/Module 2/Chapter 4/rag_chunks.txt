@@ -1,0 +1,61 @@
+RAG KNOWLEDGE CHUNKS - AI INTEGRATION FOR ROBOT DECISION MAKING
+
+Chunk 1: LLM Integration in Robotics
+- Natural language understanding and generation capabilities
+- Task planning and reasoning using language models
+- Human-robot interaction through natural language
+- Knowledge integration and commonsense reasoning
+
+Chunk 2: Vision-Language Models (VLMs)
+- Multimodal perception combining visual and language
+- Visual question answering capabilities
+- Instruction following with visual grounding
+- Object manipulation based on language descriptions
+
+Chunk 3: AI-ROS 2 Integration Architecture
+- Service-based integration for on-demand processing
+- Action-based integration for long-running tasks
+- Publish-subscribe integration for streaming data
+- Communication patterns between AI and ROS 2
+
+Chunk 4: Natural Language Command Processing
+- Language understanding and parsing
+- Task decomposition and planning
+- World modeling and context awareness
+- Action execution and monitoring
+
+Chunk 5: Vision-Language Integration Patterns
+- Cross-modal attention mechanisms
+- Language-to-vision grounding
+- Feature fusion strategies at different levels
+- Feedback loops for refined understanding
+
+Chunk 6: AI-Driven Task Planning
+- Hierarchical planning with symbolic and motion planning
+- Reactive planning with environmental adaptation
+- Learning-based planning from demonstration
+- Complex task execution and management
+
+Chunk 7: Real-Time AI Considerations
+- Latency management for responsive robots
+- Resource management and optimization
+- Robustness and fallback behaviors
+- Uncertainty quantification and handling
+
+Chunk 8: Evaluation and Validation
+- Functional testing of AI components
+- Behavioral validation of robot actions
+- Human-robot interaction assessment
+- Safety and reliability evaluation
+
+Chunk 9: Multimodal Perception
+- Combining visual, linguistic, and sensor data
+- Cross-modal attention and fusion
+- Context-aware perception
+- Adaptive perception based on tasks
+
+Chunk 10: Intelligent Decision Making
+- High-level reasoning and planning
+- Integration of multiple AI modalities
+- Adaptive behavior generation
+- Human-in-the-loop decision making

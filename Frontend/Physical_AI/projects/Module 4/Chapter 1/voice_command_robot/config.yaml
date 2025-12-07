@@ -1,0 +1,100 @@
+# Configuration for Voice Command Robot System
+
+voice_robot_controller:
+  # Audio settings
+  sample_rate: 16000
+  channels: 1
+  chunk_duration: 2.0  # seconds
+
+  # Confidence threshold for voice recognition
+  confidence_threshold: 0.7
+
+  # Robot movement parameters
+  linear_speed: 0.5  # m/s
+  angular_speed: 0.5  # rad/s
+  action_duration: 2.0  # seconds for actions
+
+  # Safety parameters
+  max_distance: 10.0  # maximum movement distance in meters
+  max_angle: 360.0    # maximum rotation angle in degrees
+
+  # Command timeout settings
+  command_timeout: 30.0  # seconds before deactivating voice control
+
+  # Topic names
+  voice_commands_topic: "/voice_commands"
+  voice_control_topic: "/voice_control"
+  cmd_vel_topic: "/cmd_vel"
+  status_topic: "/robot_status"
+  voice_feedback_topic: "/voice_feedback"
+
+# Command mapping configuration
+command_mapping:
+  # Movement commands
+  move_forward:
+    patterns:
+      - "move forward"
+      - "go forward"
+      - "forward"
+      - "go ahead"
+      - "move straight"
+      - "go straight"
+    action: "move_forward"
+    params:
+      direction: "forward"
+      distance: 1.0
+
+  move_backward:
+    patterns:
+      - "move backward"
+      - "go backward"
+      - "backward"
+      - "back"
+      - "go back"
+      - "move back"
+    action: "move_backward"
+    params:
+      direction: "backward"
+      distance: 1.0
+
+  turn_left:
+    patterns:
+      - "turn left"
+      - "left turn"
+      - "turn to the left"
+      - "pivot left"
+      - "rotate left"
+    action: "turn_left"
+    params:
+      direction: "left"
+      angle: 90.0
+
+  turn_right:
+    patterns:
+      - "turn right"
+      - "right turn"
+      - "turn to the right"
+      - "pivot right"
+      - "rotate right"
+    action: "turn_right"
+    params:
+      direction: "right"
+      angle: 90.0
+
+  stop:
+    patterns:
+      - "stop"
+      - "halt"
+      - "freeze"
+      - "pause"
+      - "cease"
+    action: "stop"
+    params: {}
+
+# ROS 2 specific settings
+ros2:
+  node_name: "voice_robot_controller"
+  qos_profile:
+    depth: 10
+    durability: "volatile"
+    reliability: "reliable"

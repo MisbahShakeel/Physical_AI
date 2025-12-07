@@ -1,0 +1,85 @@
+     1→RAG KNOWLEDGE CHUNKS - COGNITIVE PLANNING USING LLMs FOR ROS 2 ACTION SEQUENCING
+     2→
+     3→Chunk 1: LLM-Based Cognitive Planning Principles
+     4→- Converting natural language to executable robot actions
+     5→- Hierarchical task decomposition using LLMs
+     6→- Integration of LLM reasoning with robotic systems
+     7→- Safety validation of LLM-generated plans
+     8→- Context-aware planning with environmental awareness
+     9→
+    10→Chunk 2: LLM Integration with ROS 2
+    11→- Natural language understanding and command interpretation
+    12→- Action decomposition and sequencing
+    13→- ROS 2 message generation and service calls
+    14→- Safety validation and plan filtering
+    15→- Execution monitoring and feedback
+    16→
+    17→Chunk 3: Cognitive Architecture for LLM Planning
+    18→- Perception interface for environmental understanding
+    19→- LLM-based reasoning and planning module
+    20→- Action execution layer with ROS 2 integration
+    21→- Memory systems for context and history
+    22→- Safety and validation mechanisms
+    23→
+    24→Chunk 4: Natural Language to Action Mapping
+    25→- Command parsing and intent recognition
+    26→- Entity extraction (objects, locations, parameters)
+    27→- Action decomposition into primitive operations
+    28→- Parameter validation and safety checking
+    29→- Execution sequence generation
+    30→
+    31→Chunk 5: Hierarchical Planning with LLMs
+    32→- Generating high-level task plans
+    33→- Decomposing complex tasks into subtasks
+    34→- Adapting plans based on environmental feedback
+    35→- Handling plan failures and recovery
+    36→- Incorporating learned knowledge from experience
+    37→
+    38→Chunk 6: Safety and Validation in LLM Planning
+    39→- Action validation against robot capabilities
+    40→- Environmental constraint checking
+    41→- Collision avoidance integration
+    42→- Emergency stop triggers
+    43→- Plan feasibility verification
+    44→
+    45→Chunk 7: Context-Aware Planning
+    46→- Robot state awareness (position, battery, capabilities)
+    47→- Environmental state (object locations, obstacles)
+    48→- Task history and learned preferences
+    49→- Multi-modal information integration
+    50→- Temporal and spatial reasoning
+    51→
+    52→Chunk 8: Prompt Engineering for Robotics
+    53→- Clear action specification requirements
+    54→- Safety constraint integration
+    55→- Format consistency for parsing
+    56→- Context provision for accurate responses
+    57→- Error handling and recovery instructions
+    58→
+    59→Chunk 9: Plan Execution and Monitoring
+    60→- Real-time execution monitoring
+    61→- Deviation detection and correction
+    62→- Feedback integration from sensors
+    63→- Plan adaptation based on execution results
+    64→- Failure recovery and alternative planning
+    65→
+    66→Chunk 10: Integration with Traditional Planners
+    67→- Providing high-level task decomposition
+    68→- Generating navigation goals for path planners
+    69→- Coordinating manipulation tasks with motion planners
+    70→- Handling exceptions and replanning scenarios
+    71→- Combining symbolic reasoning with geometric planning
+    72→
+    73→Chunk 11: Evaluation Metrics for LLM Planning
+    74→- Plan correctness and completeness
+    75→- Execution success rate
+    76→- Safety compliance
+    77→- Response time and efficiency
+    78→- Human-robot interaction quality
+    79→
+    80→Chunk 12: Limitations and Challenges
+    81→- Hallucination and incorrect action generation
+    82→- Lack of real-time environmental awareness
+    83→- Difficulty with precise quantitative tasks
+    84→- Safety concerns with autonomous decision-making
+    85→- Computational resource requirements

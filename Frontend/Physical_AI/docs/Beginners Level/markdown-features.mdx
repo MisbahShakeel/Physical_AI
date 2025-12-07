@@ -1,0 +1,158 @@
+---
+sidebar_position: 4
+---
+
+# Documentation Features for Physical AI Projects
+
+Physical AI and Robotics documentation supports **[Markdown](https://daringfireball.net/projects/markdown/syntax)** with additional features for technical documentation.
+
+## Front Matter for Technical Docs
+
+Technical documents have metadata at the top called [Front Matter](https://jekyllrb.com/docs/front-matter/) for organizing robotics documentation:
+
+```text title="robot-spec.md"
+// highlight-start
+---
+id: turtlebot3-spec
+title: TurtleBot3 Robot Specification
+description: Technical specifications for TurtleBot3 robot model
+slug: /robotics/turtlebot3-spec
+---
+// highlight-end
+
+## Robot specifications
+
+Robot model with [differential drive](./drive-systems.md)
+```
+
+## Links for Documentation Navigation
+
+Regular Markdown links connect related robotics concepts and documentation:
+
+```md
+Learn about [Robot kinematics](/docs/Physical AI And Robotics Learning/intro).
+```
+
+**Result:** Learn about [Robot kinematics](/docs/Physical AI And Robotics Learning/intro).
+
+## Images for Robotics Documentation
+
+Markdown images are essential for showing robot diagrams, simulation screenshots, and technical illustrations:
+
+You can use absolute paths to reference images in the static directory (`static/img/robot-architecture.png`):
+
+```md
+![Robot Architecture](/img/robot-architecture.png)
+```
+
+You can reference images relative to the current file for robot-specific diagrams:
+
+```md
+![Robot Schematic](./img/robot-schematic.png)
+```
+
+## Code Blocks for Robotics Code
+
+Markdown code blocks are crucial for documenting ROS nodes, Gazebo configurations, and AI algorithms:
+
+````md
+```python title="scripts/navigation_node.py"
+#!/usr/bin/env python3
+import rospy
+from geometry_msgs.msg import Twist
+
+def move_robot():
+    rospy.init_node('robot_mover', anonymous=True)
+    velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    vel_msg = Twist()
+    # Implementation details
+```
+````
+
+```python title="scripts/navigation_node.py"
+#!/usr/bin/env python3
+import rospy
+from geometry_msgs.msg import Twist
+
+def move_robot():
+    rospy.init_node('robot_mover', anonymous=True)
+    velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    vel_msg = Twist()
+    # Implementation details
+```
+
+## Admonitions for Robotics Safety
+
+Docusaurus admonitions are important for highlighting safety considerations and warnings in robotics projects:
+
+```md
+:::tip Best Practice
+
+Always test robot navigation algorithms in simulation first
+
+:::
+
+:::danger Safety Warning
+
+Ensure all safety checks are in place before running on physical robots
+
+:::
+```
+
+:::tip Best Practice
+
+Always test robot navigation algorithms in simulation first
+
+:::
+
+:::danger Safety Warning
+
+Ensure all safety checks are in place before running on physical robots
+
+:::
+
+## MDX for Interactive Robotics Documentation
+
+[MDX](https://mdxjs.com/) can make robotics documentation more **interactive** with custom components for visualizing robot states and parameters:
+
+```jsx
+export const RobotStatus = ({status, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '20px',
+      color: '#fff',
+      padding: '10px',
+      cursor: 'pointer',
+    }}
+    onClick={() => {
+      alert(`Robot status: ${status}`)
+    }}>
+    {status}
+  </span>
+);
+
+Robot is currently <RobotStatus color="#25c2a0">Operational</RobotStatus> !
+
+Robot status: <RobotStatus color="#FF6B6B">Error</RobotStatus> !
+```
+
+export const RobotStatus = ({children, status, color}) => (
+  <span
+    style={{
+      backgroundColor: color,
+      borderRadius: '20px',
+      color: '#fff',
+      padding: '10px',
+      cursor: 'pointer',
+    }}
+    onClick={() => {
+      alert(`Robot status: ${status || children}`);
+    }}>
+    {children}
+  </span>
+);
+
+Robot is currently <RobotStatus color="#25c2a0" status="Operational">Operational</RobotStatus> !
+
+Robot status: <RobotStatus color="#FF6B6B" status="Error">Error</RobotStatus> !

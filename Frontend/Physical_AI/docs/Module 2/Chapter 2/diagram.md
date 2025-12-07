@@ -1,0 +1,1 @@
+[Diagram: Humanoid robot equipped with simulated LiDAR and depth camera]

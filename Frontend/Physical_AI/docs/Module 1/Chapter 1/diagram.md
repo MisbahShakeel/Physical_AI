@@ -1,0 +1,1 @@
+[Diagram: ROS 2 communication graph showing nodes, topics, and services]

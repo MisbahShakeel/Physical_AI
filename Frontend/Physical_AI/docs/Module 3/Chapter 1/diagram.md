@@ -1,0 +1,1 @@
+[Diagram: AI-robot brain architecture showing interconnected components including perception, memory, reasoning, planning systems with LLMs, VLMs, and humanoid control integration]
