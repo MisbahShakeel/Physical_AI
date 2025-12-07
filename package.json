@@ -1,0 +1,39 @@
+{
+  "name": "physical-ai-robotics-learning-framework",
+  "version": "1.0.0",
+  "description": "A comprehensive educational platform for Physical AI and Robotics with Docusaurus frontend and FastAPI backend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd Backend && python -m uvicorn fastapi_endpoints:app --reload\" \"cd Frontend/Physical_AI && npm start\"",
+    "dev:frontend": "cd Frontend/Physical_AI && npm start",
+    "dev:backend": "cd Backend && python -m uvicorn fastapi_endpoints:app --reload",
+    "build:frontend": "cd Frontend/Physical_AI && npm run build",
+    "build": "npm run build:frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "robotics",
+    "education",
+    "docusaurus",
+    "fastapi",
+    "rag",
+    "physical-ai"
+  ],
+  "author": "Physical AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/physical-ai-robotics-learning-framework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/physical-ai-robotics-learning-framework/issues"
+  },
+  "homepage": "https://github.com/your-username/physical-ai-robotics-learning-framework#readme"
+}
