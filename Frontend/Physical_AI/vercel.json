@@ -1,0 +1,9 @@
+{
+  "framework": "docusaurus",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
