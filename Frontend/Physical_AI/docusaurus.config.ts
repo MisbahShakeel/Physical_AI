@@ -14,14 +14,14 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-// Set the production url of your site here
-url: 'https://physical-ai.vercel.app',
-// Set the /<baseUrl>/ pathname under which your site is served
-baseUrl: '/',
-trailingSlash: false,
+  // Set the production url of your site here
+  url: 'https://physical-ai.vercel.app',
+  // Set the /<baseUrl>/ pathname under which your site is served
+  baseUrl: '/',
+  trailingSlash: true,
 
-// GitHub pages deployment config.
-// If you aren't using GitHub pages, you don't need these.
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
   organizationName: 'MisbahShakeel', // Usually your GitHub org/user name.
   projectName: 'Physical_AI', // Usually your repo name.
 

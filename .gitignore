@@ -49,3 +49,4 @@ Frontend/Physical_AI/.env.production.local
 .Trashes
 ehthumbs.db
 Thumbs.db
+.env

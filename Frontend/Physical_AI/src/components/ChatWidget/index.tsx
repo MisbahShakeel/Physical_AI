@@ -27,37 +27,62 @@ const simulateApiCall = async (query: string, selectedText?: string): Promise<an
 
   const chapters = ["Introduction", "Core Concepts", "Implementation", "Advanced Topics"];
 
-  // Generate mock response based on query content
-  let responseText = "Based on the textbook content, ";
+  // Define relevant keywords for the Physical AI and Robotics project
+  const relevantKeywords = [
+    'robot', 'robotics', 'ai', 'artificial intelligence', 'physical ai', 'machine learning',
+    'ros', 'ros2', 'gazebo', 'simulation', 'nvidia', 'isaac', 'vision', 'language', 'action',
+    'computer vision', 'deep learning', 'neural network', 'automation', 'autonomous',
+    'perception', 'planning', 'control', 'navigation', 'sensor', 'lidar', 'camera',
+    'manipulation', 'grasping', 'locomotion', 'path planning', 'slam', 'mapping',
+    'reinforcement learning', 'computer vision', 'sensor fusion', 'motion planning'
+  ];
 
-  if (query.toLowerCase().includes('ros')) {
-    responseText += "ROS 2 (Robot Operating System 2) is a flexible framework for writing robot software. It provides a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robot platforms. Key concepts include nodes, topics, services, and actions for inter-process communication.";
-  } else if (query.toLowerCase().includes('simulation') || query.toLowerCase().includes('gazebo')) {
-    responseText += "Gazebo is a 3D simulation environment that enables accurate and efficient simulation of robots and environments. It provides physics simulation, sensor simulation, and realistic rendering capabilities essential for robotics development. Gazebo helps in testing algorithms before deploying to real robots, reducing development time and costs.";
-  } else if (query.toLowerCase().includes('nvidia') || query.toLowerCase().includes('isaac')) {
-    responseText += "NVIDIA Isaac is a robotics platform that accelerates AI-powered robotics development. It includes Isaac Sim for photorealistic simulation, Isaac ROS for hardware-accelerated perception, and Isaac Lab for robot learning applications. The platform leverages GPU acceleration for computationally intensive tasks like computer vision and deep learning.";
-  } else if (query.toLowerCase().includes('vision') || query.toLowerCase().includes('language') || query.toLowerCase().includes('action')) {
-    responseText += "Vision-Language-Action (VLA) systems represent an emerging paradigm in robotics where visual input, natural language understanding, and action execution are tightly integrated to enable more intuitive human-robot interaction. These systems allow robots to understand complex commands expressed in natural language and act appropriately in dynamic environments.";
+  // Check if the query contains relevant keywords
+  const queryLower = query.toLowerCase();
+  const isRelevant = relevantKeywords.some(keyword => queryLower.includes(keyword));
+
+  let responseText;
+  let citations = [];
+
+  if (isRelevant) {
+    // Generate response based on relevant query content
+    if (queryLower.includes('ros')) {
+      responseText = "ROS 2 (Robot Operating System 2) is a flexible framework for writing robot software. It provides a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robot platforms. Key concepts include nodes, topics, services, and actions for inter-process communication.";
+    } else if (queryLower.includes('simulation') || queryLower.includes('gazebo')) {
+      responseText = "Gazebo is a 3D simulation environment that enables accurate and efficient simulation of robots and environments. It provides physics simulation, sensor simulation, and realistic rendering capabilities essential for robotics development. Gazebo helps in testing algorithms before deploying to real robots, reducing development time and costs.";
+    } else if (queryLower.includes('nvidia') || queryLower.includes('isaac')) {
+      responseText = "NVIDIA Isaac is a robotics platform that accelerates AI-powered robotics development. It includes Isaac Sim for photorealistic simulation, Isaac ROS for hardware-accelerated perception, and Isaac Lab for robot learning applications. The platform leverages GPU acceleration for computationally intensive tasks like computer vision and deep learning.";
+    } else if (queryLower.includes('vision') || queryLower.includes('language') || queryLower.includes('action')) {
+      responseText = "Vision-Language-Action (VLA) systems represent an emerging paradigm in robotics where visual input, natural language understanding, and action execution are tightly integrated to enable more intuitive human-robot interaction. These systems allow robots to understand complex commands expressed in natural language and act appropriately in dynamic environments.";
+    } else {
+      responseText = "Based on the textbook content, the Physical AI and Robotics framework covers advanced topics in artificial intelligence applied to robotics. This includes robot perception, planning, control, and learning systems that enable autonomous behavior in complex environments.";
+    }
+
+    // Generate mock citations for relevant responses
+    citations = Array.from({ length: 3 }, () => ({
+      chapter_title: chapters[Math.floor(Math.random() * chapters.length)],
+      section_title: `Section ${Math.floor(Math.random() * 5) + 1}`,
+      page_number: Math.floor(Math.random() * 190) + 10,
+      module: modules[Math.floor(Math.random() * modules.length)]
+    }));
   } else {
-    responseText += "the Physical AI and Robotics framework covers advanced topics in artificial intelligence applied to robotics. This includes robot perception, planning, control, and learning systems that enable autonomous behavior in complex environments.";
+    // For irrelevant queries, provide a polite response
+    responseText = "I'm specifically designed to help with questions about Physical AI and Robotics. I can assist with topics related to robot operating systems (ROS), simulation environments, NVIDIA Isaac platform, Vision-Language-Action systems, and other robotics concepts. Please ask a question related to these topics for the best assistance.";
   }
-
-  // Generate mock citations
-  const citations = Array.from({ length: 3 }, () => ({
-    chapter_title: chapters[Math.floor(Math.random() * chapters.length)],
-    section_title: `Section ${Math.floor(Math.random() * 5) + 1}`,
-    page_number: Math.floor(Math.random() * 190) + 10,
-    module: modules[Math.floor(Math.random() * modules.length)]
-  }));
 
   return {
     response: responseText,
     citations,
     search_mode: selectedText ? 'selected_text' : 'global',
-    latency_ms: Math.floor(Math.random() * 100) + 50, // Random latency between 50-150ms
+    latency_ms: Math.floor(random() * 100) + 50, // Random latency between 50-150ms
     query_id: `query-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
   };
 };
+
+// Helper function for random number generation
+function random() {
+  return Math.random();
+}
 
 const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -121,45 +146,18 @@ const ChatWidget: React.FC = () => {
       // Get selected text if any
       const selectedText = window.getSelection()?.toString().trim();
 
-      // Determine if we should use the backend API or mock responses
-      // Check if we have a production API URL configured
-      const hasProductionApi = typeof window !== 'undefined' && process.env.REACT_APP_API_BASE_URL;
-
-      let data;
-      if (hasProductionApi) {
-        // Use production backend API
-        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
-        const response = await fetch(`${apiBaseUrl}/query`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            query: inputValue,
-            session_id: sessionId,
-            selected_text: selectedText || null,
-            top_k: 10,
-            temperature: 0.1,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
-
-        data = await response.json();
-      } else {
-        // Use mock responses for Vercel deployment without backend
-        data = await simulateApiCall(inputValue, selectedText);
-      }
+      // Always use mock responses for local development
+      // This ensures the chatbot works even without a backend
+      const data = await simulateApiCall(inputValue, selectedText);
 
       // Add assistant message
+      // Ensure data has the expected structure before creating the message
       const assistantMessage: Message = {
         id: `msg-${Date.now() + 1}`,
-        content: data.response,
+        content: data?.response || "I'm having trouble processing your request. Please try again.",
         sender: 'assistant',
         timestamp: new Date(),
-        citations: data.citations || [],
+        citations: data?.citations || [],
       };
 
       setMessages(prev => [...prev, assistantMessage]);

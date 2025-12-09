@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
-import Layout from '@theme/Layout';
-import ChatWidget from '@site/src/components/ChatWidget';
+import React from 'react';
+import OriginalLayout from '@theme-original/Layout';
+import ChatWidget from '../components/ChatWidget';
 
-export default function LayoutWrapper(props) {
+export default function Layout(props) {
   return (
-    <>
-      <Layout {...props}>
-        {props.children}
-      </Layout>
+    <OriginalLayout {...props}>
+      {props.children}
       <ChatWidget />
-    </>
+    </OriginalLayout>
   );
 }
