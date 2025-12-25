@@ -1,47 +1,47 @@
-[Diagram: Complete Vision-Language-Action (VLA) control loop]
+[Diagram: Physical AI - Integrated Vision-Language-Action Control for Embodied Intelligence]
 
-This diagram illustrates the complete Vision-Language-Action (VLA) control loop:
+This diagram presents the integrated Vision-Language-Action (VLA) control architecture for embodied intelligence in Physical AI systems. The visualization details:
 
-1. **Visual Perception**:
-   - Camera sensors (RGB, depth, thermal)
-   - Object detection and recognition
-   - Scene understanding and segmentation
-   - 3D reconstruction and spatial mapping
-   - Visual tracking and motion analysis
+1. **Multimodal Perception**:
+   - Advanced visual processing (RGB-D, thermal, multi-spectral)
+   - Real-time object detection and semantic segmentation
+   - 3D scene reconstruction and spatial understanding
+   - Dynamic scene analysis and event recognition
+   - Cross-modal sensor fusion for robust perception
 
-2. **Language Processing**:
-   - Natural language input (voice/text)
-   - Speech-to-text conversion
-   - Semantic parsing and understanding
-   - Command interpretation and validation
-   - Context extraction and grounding
+2. **Language Understanding**:
+   - Natural language processing with contextual awareness
+   - Command grounding to physical actions and objects
+   - Multilingual support and adaptive language models
+   - Dialogue management and conversational understanding
+   - Instruction parsing with ambiguity resolution
 
-3. **Multimodal Fusion**:
-   - Feature-level fusion
-   - Decision-level fusion
-   - Attention mechanisms
-   - Cross-modal alignment
-   - Uncertainty integration
+3. **Cognitive Integration**:
+   - Cross-modal attention mechanisms
+   - Memory-augmented reasoning
+   - Uncertainty quantification and robust decision-making
+   - Knowledge base integration and retrieval
+   - Attention-based feature alignment across modalities
 
-4. **Reasoning and Planning**:
-   - High-level task planning
-   - Action selection and sequencing
-   - Safety validation and filtering
-   - Context-aware reasoning
-   - Memory and learning integration
+4. **Action Planning**:
+   - Task and motion planning integration
+   - Multi-step action sequence optimization
+   - Safety-constrained trajectory generation
+   - Resource-aware planning with computational limits
+   - Adaptive planning with environmental feedback
 
-5. **Action Execution**:
-   - Navigation and movement control
-   - Manipulation and interaction systems
-   - Joint control and trajectory planning
-   - Real-time execution monitoring
-   - Feedback integration
+5. **Embodied Control**:
+   - Real-time motion control and coordination
+   - Manipulation and dexterous interaction planning
+   - Navigation in dynamic and uncertain environments
+   - Human-aware behavior and social compliance
+   - Multi-modal feedback integration for closed-loop control
 
-6. **Feedback Loop**:
-   - Sensor feedback (visual, proprioceptive, tactile)
-   - Execution status monitoring
-   - Performance evaluation
-   - Learning and adaptation
-   - Closed-loop control correction
+6. **Adaptive Learning**:
+   - Online learning from interaction outcomes
+   - Transfer learning between tasks and environments
+   - Human feedback integration for behavior refinement
+   - Performance monitoring and self-correction
+   - Continuous adaptation to changing conditions
 
-The loop demonstrates how visual, linguistic, and action modalities are integrated in a continuous control system for intelligent robotic behavior.
+The diagram demonstrates how vision, language, and action are seamlessly integrated to create intelligent, responsive robots capable of understanding and acting in complex real-world environments through sophisticated multimodal processing.

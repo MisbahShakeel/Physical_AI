@@ -2,6 +2,14 @@
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
+## Environment Variables
+
+Create a `.env` file in the root of the Frontend/Physical_AI directory with the following variables:
+
+```bash
+REACT_APP_API_URL=http://localhost:8000
+```
+
 ## Installation
 
 ```bash

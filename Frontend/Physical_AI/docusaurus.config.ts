@@ -32,7 +32,16 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ur'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+      },
+      ur: {
+        label: 'Urdu',
+        direction: 'rtl', // Right-to-left for Urdu
+      },
+    },
   },
 
   presets: [
@@ -119,8 +128,8 @@ const config: Config = {
           title: 'Robotics Community',
           items: [
             {
-              label: 'ROS Answers',
-              href: 'https://answers.ros.org/',
+              label: 'ROS Documentation',
+              href: 'https://docs.ros.org/',
             },
             {
               label: 'Robotics Stack Exchange',
@@ -129,6 +138,14 @@ const config: Config = {
             {
               label: 'Gazebo Simulation',
               href: 'https://gazebosim.org/',
+            },
+            {
+              label: 'IEEE Robotics & Automation Society',
+              href: 'https://www.ieee-ras.org/',
+            },
+            {
+              label: 'Open Robotics',
+              href: 'https://www.openrobotics.org/',
             },
           ],
         },
@@ -140,12 +157,20 @@ const config: Config = {
               href: 'https://scholar.google.com/scholar?q=physical+ai+robotics',
             },
             {
-              label: 'GitHub Repository',
-              href: 'https://github.com/physical-ai/physical-ai',
+              label: 'MIT CSAIL Robotics Research',
+              href: 'https://www.csail.mit.edu/research/robotics',
             },
             {
-              label: 'Open Source Robotics',
-              href: 'https://www.osrfoundation.org/',
+              label: 'Carnegie Mellon Robotics Institute',
+              href: 'https://www.ri.cmu.edu/',
+            },
+            {
+              label: 'Robotics Research Papers',
+              href: 'https://arxiv.org/list/cs.RO/recent',
+            },
+            {
+              label: 'Open Source Robotics Projects',
+              href: 'https://github.com/ros',
             },
           ],
         },

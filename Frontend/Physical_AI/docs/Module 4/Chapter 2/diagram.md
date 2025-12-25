@@ -1,40 +1,41 @@
-[Diagram: LLM-driven cognitive planning loop for ROS 2 action sequencing]
+[Diagram: Physical AI - Advanced Cognitive Planning with LLMs for Humanoid Robot Control]
 
-This diagram illustrates the complete LLM-driven cognitive planning loop for ROS 2 action sequencing:
+This diagram presents the advanced cognitive planning architecture using Large Language Models for humanoid robot control in Physical AI systems. The visualization encompasses:
 
-1. **Natural Language Input**:
-   - User command in natural language
-   - Voice or text input interface
-   - Command preprocessing and cleaning
+1. **Natural Language Understanding**:
+   - Multi-modal input processing (text, speech, gesture)
+   - Context-aware language comprehension
+   - Ambiguity detection and resolution
+   - Intent and goal extraction from user commands
 
-2. **LLM Processing**:
-   - Large Language Model (e.g., GPT)
-   - Prompt engineering and context provision
-   - Intent recognition and task decomposition
-   - Action sequence generation
+2. **Cognitive Reasoning**:
+   - World modeling and environmental reasoning
+   - Task decomposition into executable subgoals
+   - Knowledge integration from multiple sources
+   - Planning with uncertainty and incomplete information
 
-3. **Plan Validation**:
-   - Safety checks and feasibility validation
-   - Robot capability verification
-   - Environmental constraint checking
-   - Collision avoidance integration
+3. **Action Planning and Validation**:
+   - Robot kinematic and dynamic constraint checking
+   - Multi-step plan feasibility verification
+   - Safety protocol integration and validation
+   - Resource allocation and scheduling optimization
 
-4. **ROS 2 Action Sequencing**:
-   - Action decomposition into ROS 2 primitives
-   - Service calls and action server interactions
-   - Message generation and parameter setting
-   - Execution planning and scheduling
+4. **Execution Orchestration**:
+   - Real-time action sequencing and coordination
+   - Multi-modal feedback integration (visual, tactile, auditory)
+   - Adaptive plan adjustment based on execution outcomes
+   - Failure recovery and contingency planning
 
-5. **Robot Execution**:
-   - Navigation and movement control
-   - Manipulation and interaction systems
-   - Sensor feedback integration
-   - Real-time execution monitoring
+5. **ROS 2 Integration**:
+   - Distributed system coordination and communication
+   - Real-time performance optimization
+   - Safety-critical system interfaces
+   - Multi-robot coordination capabilities
 
-6. **Feedback Loop**:
-   - Execution status monitoring
-   - Plan deviation detection
-   - Success/failure reporting
-   - Learning and adaptation mechanisms
+6. **Learning and Adaptation**:
+   - Plan execution outcome analysis
+   - User preference learning and adaptation
+   - Continuous improvement through experience
+   - Knowledge transfer between tasks and environments
 
-The loop demonstrates how natural language commands flow through the LLM planning system to generate and execute ROS 2 action sequences, with continuous feedback for adaptive planning.
+The diagram demonstrates how advanced cognitive planning systems enable humanoid robots to understand and execute complex natural language commands through sophisticated reasoning and adaptive planning mechanisms.

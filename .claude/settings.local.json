@@ -57,7 +57,11 @@
       "Bash(dir \"C:\\Users\\hp\\OneDrive\\Desktop\\Physical_AI\\Backend\")",
       "Bash(dir \"C:\\Users\\hp\\OneDrive\\Desktop\\Physical_AI\\Frontend\\Physical_AI\\src\\pages\")",
       "Bash(dir \"C:\\Users\\hp\\OneDrive\\Desktop\\Physical_AI\\Frontend\\Physical_AI\\docs\" /s)",
-      "Bash(python -c \"with open(''fastapi_endpoints.py'', ''r'') as f: content = f.read(); start_idx = content.find(''yield''); end_idx = content.find(''if __name__'', start_idx); print(content[start_idx:end_idx])\")"
+      "Bash(python -c \"with open(''fastapi_endpoints.py'', ''r'') as f: content = f.read(); start_idx = content.find(''yield''); end_idx = content.find(''if __name__'', start_idx); print(content[start_idx:end_idx])\")",
+      "Bash(pip install openai cohere qdrant-client python-dotenv)",
+      "Bash(python -c \"from agent import OpenAIAgent; print(''Import successful'')\")",
+      "Bash(python test_agent.py)",
+      "Bash(curl http://localhost:8000/)"
     ],
     "deny": [],
     "ask": []

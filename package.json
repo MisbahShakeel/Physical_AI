@@ -4,9 +4,9 @@
   "description": "A comprehensive educational platform for Physical AI and Robotics with Docusaurus frontend and FastAPI backend",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd Backend && python -m uvicorn fastapi_endpoints:app --reload\" \"cd Frontend/Physical_AI && npm start\"",
+    "dev": "concurrently \"cd backend && python -m uvicorn api:app --reload\" \"cd Frontend/Physical_AI && npm start\"",
     "dev:frontend": "cd Frontend/Physical_AI && npm start",
-    "dev:backend": "cd Backend && python -m uvicorn fastapi_endpoints:app --reload",
+    "dev:backend": "cd backend && python -m uvicorn api:app --reload",
     "build:frontend": "cd Frontend/Physical_AI && npm run build",
     "build": "npm run build:frontend",
     "test": "echo \"Error: no test specified\" && exit 1"

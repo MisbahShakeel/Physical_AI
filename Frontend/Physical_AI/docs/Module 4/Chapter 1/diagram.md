@@ -1,37 +1,41 @@
-[Diagram: Voice-to-Action pipeline with OpenAI Whisper and ROS 2]
+[Diagram: Physical AI - Voice Command Processing Architecture for Humanoid Robots]
 
-This diagram illustrates the complete voice-to-action pipeline for humanoid robots:
+This diagram presents the comprehensive voice command processing architecture for humanoid robots in Physical AI systems. The visualization details:
 
-1. **Audio Input**:
-   - Microphone array on humanoid robot
-   - Audio preprocessing and noise reduction
-   - Voice activity detection
+1. **Audio Processing Pipeline**:
+   - Advanced microphone array with beamforming capabilities
+   - Real-time noise cancellation and acoustic echo suppression
+   - Speaker identification and voice activity detection
+   - Audio quality assessment and enhancement
 
-2. **Speech Recognition**:
-   - OpenAI Whisper API integration
-   - Audio-to-text transcription
-   - Confidence scoring and validation
+2. **Speech-to-Text Conversion**:
+   - On-device and cloud-based speech recognition
+   - Multi-language support and accent adaptation
+   - Confidence scoring and uncertainty quantification
+   - Context-aware transcription for improved accuracy
 
-3. **Command Processing**:
-   - Natural language understanding
-   - Intent recognition and parsing
-   - Command validation and safety checks
+3. **Natural Language Understanding**:
+   - Intent classification and entity extraction
+   - Dialogue state tracking and context management
+   - Ambiguity resolution and clarification requests
+   - Command validation against safety and feasibility constraints
 
-4. **ROS 2 Integration**:
-   - Audio input publisher node
-   - Voice-to-text processing node
-   - Command interpretation node
-   - Action execution nodes
+4. **Action Planning and Execution**:
+   - Task decomposition into primitive robot actions
+   - Motion planning and collision avoidance
+   - Resource allocation and priority management
+   - Multi-modal action selection (navigation, manipulation, communication)
 
-5. **Robot Control**:
-   - Joint command interfaces
-   - Navigation and movement control
-   - Manipulation and interaction systems
+5. **ROS 2 Integration Layer**:
+   - Real-time communication and message passing
+   - Safety-critical system interfaces
+   - Distributed processing coordination
+   - Fault tolerance and recovery mechanisms
 
-6. **Feedback Loop**:
-   - Visual feedback (LEDs, screen, gestures)
-   - Audio confirmation
-   - Action execution status
-   - Error handling and recovery
+6. **Human-Robot Interaction Feedback**:
+   - Multi-modal response generation (speech, gesture, display)
+   - Execution monitoring and progress reporting
+   - Error recovery and graceful degradation
+   - Continuous learning from interaction outcomes
 
-The pipeline demonstrates how spoken commands flow from the user through the robot's audio system, speech recognition, and command processing to result in robot actions, with feedback to confirm successful execution.
+The diagram demonstrates how voice commands are processed through multiple sophisticated layers to enable natural, reliable interaction with humanoid robots in real-world environments.

@@ -30,6 +30,10 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+backend/.venv/
+backend/venv/
+backend/env/
+backend/.env*
 
 # Docusaurus (frontend already has its own .gitignore)
 Frontend/Physical_AI/node_modules/
