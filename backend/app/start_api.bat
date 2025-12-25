@@ -2,9 +2,12 @@
 echo Starting Physical AI and Robotics Learning Framework API...
 echo.
 
+REM Change to the app directory
+cd /d "%~dp0"
+
 REM Activate virtual environment if it exists
-if exist venv\Scripts\activate.bat (
-    call venv\Scripts\activate.bat
+if exist ..\venv\Scripts\activate.bat (
+    call ..\venv\Scripts\activate.bat
     echo Virtual environment activated.
     echo.
 )

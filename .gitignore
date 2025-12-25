@@ -1,13 +1,13 @@
 # Dependencies
-Backend/venv/
-Backend/venv*/
-Backend/env/
-Backend/env*/
-Backend/.env
-Backend/.env.local
-Backend/.env.development.local
-Backend/.env.test.local
-Backend/.env.production.local
+backend/venv/
+backend/venv*/
+backend/env/
+backend/env*/
+backend/.env
+backend/.env.local
+backend/.env.development.local
+backend/.env.test.local
+backend/.env.production.local
 
 # Python
 __pycache__/
