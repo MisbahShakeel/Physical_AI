@@ -38,31 +38,42 @@ A comprehensive educational platform that combines a Docusaurus-based frontend d
 - Node.js (v16 or higher)
 - Python (v3.8 or higher)
 - Git
+- Docker (for Qdrant vector database)
 
 ### Backend Setup
-1. Navigate to the Backend directory:
+1. Navigate to the backend directory:
    ```bash
-   cd Backend
+   cd backend/app
    ```
 
 2. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
-   # Or if no requirements.txt exists:
-   pip install fastapi uvicorn openai qdrant-client asyncpg pydantic-settings python-multipart
    ```
 
-3. Set up environment variables in a `.env` file:
+3. Set up environment variables in a `.env` file (see `.env.example` for reference):
    ```env
-   OPENAI_API_KEY=your_openai_api_key
-   QDRANT_URL=http://localhost:6333
-   QDRANT_API_KEY=your_qdrant_api_key
-   POSTGRES_DSN=postgresql://user:password@localhost/dbname
+   COHERE_API_KEY=your_cohere_api_key
+   GEMINI_API_KEY=your_gemini_api_key
+   QDRANT_URL=http://localhost:6333  # For local development
+   QDRANT_API_KEY=your_qdrant_api_key_if_using_auth
    ```
 
-4. Start the backend server:
+4. Start Qdrant vector database:
    ```bash
-   python -m uvicorn fastapi_endpoints:app --host 0.0.0.0 --port 8000
+   docker-compose up -d
+   ```
+
+   If Docker is not available, you can use a remote Qdrant instance by updating the QDRANT_URL in your .env file.
+
+5. Populate the database with documents (run once to index the textbook content):
+   ```bash
+   python main.py
+   ```
+
+6. Start the backend server:
+   ```bash
+   python -m uvicorn api:app --host 0.0.0.0 --port 8000
    ```
 
 ### Frontend Setup
